@@ -1,0 +1,39 @@
+#s-close .ask-big{position:absolute;left:84px;top:178px;margin:0;font:800 300px/1 var(--fd);letter-spacing:-.055em;color:var(--ink);white-space:nowrap}
+#s-close .ask-big .ch:last-child{color:var(--ok)}
+#s-close .ask-slogan{position:absolute;left:96px;top:500px;font:800 84px/1.08 var(--fd);letter-spacing:-.035em;display:flex;gap:28px;white-space:nowrap}
+#s-close .ask-slogan .mask{display:inline-block;padding-right:.1em}
+#s-close .ask-slogan .mask-in{display:inline-block}
+#s-close .ask-brand{position:absolute;left:96px;top:690px;display:flex;align-items:center;gap:26px}
+#s-close .ask-brand img{width:96px;height:96px;border-radius:26px;box-shadow:0 0 50px rgba(61,122,75,.25)}
+#s-close .ask-brand b{display:block;font:800 52px/1 var(--fd);letter-spacing:-.035em}
+#s-close .ask-brand span{display:block;margin-top:8px;font:500 22px var(--fm);letter-spacing:.2em;text-transform:uppercase;color:var(--ok)}
+#s-close .ask-pow{position:absolute;right:96px;top:716px;display:flex;align-items:center;gap:36px}
+#s-close .ask-pow em{font:500 18px var(--fm);font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+#s-close .ask-pow .logo{height:44px;opacity:1}
+#s-close .ask-pow .logo .lw{font-size:26px}
+#s-close .ask-rib{position:absolute;left:0;right:0;top:880px;height:90px;overflow:hidden;border-block:1px solid rgba(27,31,29,.1);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+#s-close .trk{display:flex;width:max-content;animation:ask-mq 40s linear infinite}
+#s-close .trk span{font:800 54px/90px var(--fd);letter-spacing:-.03em;white-space:nowrap;padding-right:70px;color:transparent;-webkit-text-stroke:1.5px rgba(27,31,29,.25)}
+#s-close .trk span:nth-child(even){-webkit-text-stroke-color:rgba(61,122,75,.4)}
+@keyframes ask-mq{to{transform:translateX(-50%)}}
+#s-close .ask-parts i{position:absolute;bottom:-20px;left:calc(var(--k,1) * 8%);width:12px;height:12px;border-radius:3px;background:var(--ok);opacity:0}
+#s-close.is-active .ask-parts i{animation:ask-rise 9s linear infinite}
+#s-close .ask-parts i:nth-child(1){--k:.5;animation-delay:.2s}#s-close .ask-parts i:nth-child(2){--k:1.4;animation-delay:2.6s;width:8px;height:8px}
+#s-close .ask-parts i:nth-child(3){--k:2.3;animation-delay:4.1s}#s-close .ask-parts i:nth-child(4){--k:3.2;animation-delay:1.3s;width:16px;height:16px}
+#s-close .ask-parts i:nth-child(5){--k:4.1;animation-delay:6s;width:8px;height:8px}#s-close .ask-parts i:nth-child(6){--k:5;animation-delay:3.3s}
+#s-close .ask-parts i:nth-child(7){--k:5.9;animation-delay:7.2s;width:10px;height:10px}#s-close .ask-parts i:nth-child(8){--k:6.8;animation-delay:.9s}
+#s-close .ask-parts i:nth-child(9){--k:7.7;animation-delay:5s;width:8px;height:8px}#s-close .ask-parts i:nth-child(10){--k:8.6;animation-delay:2s}
+#s-close .ask-parts i:nth-child(11){--k:9.5;animation-delay:6.8s;width:14px;height:14px}#s-close .ask-parts i:nth-child(12){--k:10.4;animation-delay:3.9s}
+@keyframes ask-rise{0%{opacity:0;transform:translateY(0) rotate(0)}10%{opacity:.7}85%{opacity:.25}100%{opacity:0;transform:translateY(-1150px) translateX(60px) rotate(300deg)}}
+@media (prefers-reduced-motion:reduce){#s-close .trk,#s-close .ask-parts i{animation:none!important}}
+#s-close .ask-big{top:150px;font-size:210px}
+#s-close .ask-slogan{top:372px;font-size:68px}
+#s-close .eyebrow{top:112px!important}
+#s-close .ask-lim{position:absolute;left:96px;right:96px;top:500px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#s-close .al-h{grid-column:1/-1;font:500 22px var(--fm);letter-spacing:.2em;text-transform:uppercase;color:var(--sage-d)}
+#s-close .al-c{display:flex;align-items:center;gap:20px;padding:26px 30px;border-radius:28px;background:rgba(255,255,255,.65);border:1px solid rgba(27,31,29,.08);box-shadow:0 4px 0 #d3d8d2;font:600 30px/1.2 var(--fb);color:var(--ink)}
+#s-close .al-c i{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#16191a;color:#eef2ec;font:700 26px var(--fdot);font-style:normal}
+#s-close .ask-brand{top:790px}
+#s-close .ask-pow{top:816px}
+#s-close .ask-rib{display:none}
