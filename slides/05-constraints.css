@@ -1,0 +1,40 @@
+#s-constraints .c-head{position:absolute;left:96px;top:130px}
+#s-constraints .c-title{margin-top:14px;font-size:140px}
+#s-constraints .c-seal{position:absolute;right:110px;top:122px;width:540px;height:190px;transform:rotate(-6deg);z-index:4}
+#s-constraints .c-seal-in{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  border:5px solid var(--orange-l);border-radius:18px;outline:2px solid var(--orange-l);outline-offset:6px;color:var(--orange-l);
+  background:rgba(191,59,48,.12);font:800 40px/1.05 var(--fd);letter-spacing:.02em;text-align:center;opacity:0;
+  box-shadow:0 0 60px rgba(191,59,48,.25), inset 0 0 40px rgba(191,59,48,.15)}
+#s-constraints .c-seal b{font-weight:800}
+#s-constraints .c-seal-top{font:500 16px var(--fm);letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+#s-constraints.is-active .c-seal-in{animation:c-slam 1.1s 2.1s var(--spring) both, c-pulse 3.5s 3.5s ease-in-out infinite}
+@keyframes c-slam{0%{opacity:0;transform:scale(3) rotate(10deg)}35%{opacity:1}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes c-pulse{50%{box-shadow:0 0 90px rgba(191,59,48,.5), inset 0 0 40px rgba(191,59,48,.15)}}
+#s-constraints .c-row{position:absolute;left:96px;right:96px;top:380px;height:590px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+#s-constraints .c-card{position:relative;overflow:hidden;border-radius:28px;padding:74px 44px 40px;display:flex;flex-direction:column;opacity:0;
+  background:linear-gradient(170deg,rgba(27,31,29,.07),rgba(27,31,29,.02));border:1px solid rgba(27,31,29,.12);backdrop-filter:blur(14px)}
+#s-constraints .c-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;
+  background:repeating-linear-gradient(-45deg,var(--orange) 0 12px,transparent 12px 24px);background-size:34px 34px;opacity:.7;animation:c-move 1.6s linear infinite}
+#s-constraints .c-stripe{position:absolute;left:0;right:0;top:0;height:26px;
+  background:repeating-linear-gradient(-45deg,var(--orange-l) 0 18px,#161b17 18px 36px);background-size:51px 51px;animation:c-move 1.4s linear infinite}
+@keyframes c-move{to{background-position:51px 0}}
+#s-constraints .c-card:nth-child(2) .c-stripe{animation-direction:reverse}
+#s-constraints .c-n{position:absolute;right:36px;top:48px;font:800 110px/1 var(--fd);color:rgba(27,31,29,.07);letter-spacing:-.04em}
+#s-constraints .c-ic{width:104px;height:104px;color:var(--ok);margin-bottom:34px;filter:drop-shadow(0 0 18px rgba(61,122,75,.35))}
+#s-constraints .c-ic path,#s-constraints .c-ic rect,#s-constraints .c-ic circle{stroke-dasharray:1;stroke-dashoffset:1}
+#s-constraints.is-active .c-ic path,#s-constraints.is-active .c-ic rect,#s-constraints.is-active .c-ic circle{animation:c-draw 1.4s 1s var(--out) forwards}
+#s-constraints.is-active .c-card:nth-child(2) .c-ic *{animation-delay:1.2s}
+#s-constraints.is-active .c-card:nth-child(3) .c-ic *{animation-delay:1.4s}
+#s-constraints.is-active .c-slash{animation-delay:1.8s}
+@keyframes c-draw{to{stroke-dashoffset:0}}
+#s-constraints .c-txt{font:700 40px/1.18 var(--fd);letter-spacing:-.02em;margin:0;color:var(--ink)}
+#s-constraints .c-txt span{color:var(--orange-l)}
+#s-constraints .c-tag{margin-top:auto;align-self:flex-start;font:500 20px var(--fm);letter-spacing:.16em;color:var(--orange-l);
+  border:1px solid rgba(255,138,76,.45);border-radius:99px;padding:10px 22px;background:rgba(191,59,48,.14)}
+#s-constraints .c-tag.chip{color:#eef2ec;background:var(--ok);border-color:var(--ok);box-shadow:0 0 30px rgba(61,122,75,.35)}
+#s-constraints.is-active .c-card{animation:rv-up .9s var(--out) calc(.6s + var(--i)*.16s) both, c-bob 7s calc(2s + var(--i)*.6s) ease-in-out infinite}
+@keyframes c-bob{50%{translate:0 -8px}}
+@media (prefers-reduced-motion:reduce){
+  #s-constraints .c-card,#s-constraints .c-seal-in{animation:none!important;opacity:1}
+  #s-constraints .c-stripe,#s-constraints .c-card::after{animation:none!important}
+  #s-constraints .c-ic *{stroke-dashoffset:0!important;animation:none!important}}

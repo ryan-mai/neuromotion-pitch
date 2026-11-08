@@ -1,0 +1,98 @@
+<section class="slide" id="s-functions" data-section="The Problem · Functions" data-theme="light">
+  <div class="bg-aurora"></div><div class="bg-grid"></div><div class="bg-grain"></div>
+
+  <header class="fn-head">
+    <div class="eyebrow rv" style="--d:.1s">What it does</div>
+    <h2 class="h2 fn-title" data-split="chars" style="--d:.15s">Functions</h2>
+  </header>
+
+  <!-- pipeline rail -->
+  <div class="fn-rail">
+    <div class="fn-line rv-clip" style="--d:.5s"></div>
+    <i class="fn-dot" style="--k:0s"></i><i class="fn-dot" style="--k:1.3s"></i><i class="fn-dot" style="--k:2.6s"></i>
+    <div class="fn-node rv" style="--d:.4s"><span class="fn-lab">Input</span><b class="badge-n">1</b></div>
+    <div class="fn-node rv" style="--d:.65s"><span class="fn-lab">Track</span><b class="badge-n">2</b></div>
+    <div class="fn-node rv" style="--d:.9s"><span class="fn-lab">Track</span><b class="badge-n">3</b></div>
+    <div class="fn-node rv" style="--d:1.15s"><span class="fn-lab">Report</span><b class="badge-n">4</b></div>
+    <div class="fn-node rv" style="--d:1.4s"><span class="fn-lab">One page</span><b class="badge-n">5</b></div>
+  </div>
+
+  <div class="fn-cards">
+    <article class="fn-card card-w" style="--c:0">
+      <div class="fn-vis v1">
+        <div class="row" style="--k:0"><span>Family history</span><i class="chk"></i><b class="bar"></b></div>
+        <div class="row" style="--k:1"><span>Medical history</span><i class="chk"></i><b class="bar"></b></div>
+        <div class="row" style="--k:2"><span>Symptoms</span><i class="chk"></i><b class="bar"></b></div>
+        <div class="row" style="--k:3"><span>Test results</span><i class="chk"></i><b class="bar"></b></div>
+      </div>
+      <p class="fn-text">Take input from the doctor in the form of family history, medical history, current symptoms, test results</p>
+    </article>
+
+    <article class="fn-card card-w" style="--c:1">
+      <div class="fn-vis v2">
+        <svg viewBox="0 0 252 250" aria-hidden="true">
+          <text x="16" y="30" class="fn-lab-s">SPEECH</text>
+          <g class="sp-bars"></g>
+          <path class="sp-trend" d=""/>
+          <text x="16" y="236" class="fn-lab-s">TIME →</text>
+        </svg>
+      </div>
+      <p class="fn-text">Track and display the trend of the patient's speaking ability over time</p>
+    </article>
+
+    <article class="fn-card card-w" style="--c:2">
+      <div class="fn-vis v3">
+        <svg viewBox="0 0 252 250" aria-hidden="true">
+          <defs><linearGradient id="fn-ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bf3b30" stop-opacity=".32"/><stop offset="1" stop-color="#bf3b30" stop-opacity="0"/></linearGradient></defs>
+          <text x="16" y="30" class="fn-lab-s">GRIP</text>
+          <g class="gr-grid"><line x1="24" y1="90" x2="240" y2="90"/><line x1="24" y1="130" x2="240" y2="130"/><line x1="24" y1="170" x2="240" y2="170"/></g>
+          <line x1="24" y1="50" x2="24" y2="220" class="gr-ax"/><line x1="24" y1="220" x2="240" y2="220" class="gr-ax"/>
+          <path class="gr-area" d="M24 70 C60 62 80 74 100 88 S140 110 160 135 S200 175 240 205 L240 220 L24 220 Z" fill="url(#fn-ar)"/>
+          <path class="gr-line" pathLength="1" d="M24 70 C60 62 80 74 100 88 S140 110 160 135 S200 175 240 205"/>
+          <circle class="gr-end" cx="240" cy="205" r="7"/>
+          <circle class="gr-ring" cx="240" cy="205" r="7"/>
+          <text x="16" y="242" class="fn-lab-s">AFFECTED AREA</text>
+        </svg>
+      </div>
+      <p class="fn-text">Track and display the trend of the patient's movement ability over time in the affected areas</p>
+    </article>
+
+    <article class="fn-card card-w" style="--c:3">
+      <div class="fn-vis v4">
+        <svg viewBox="0 0 252 250" aria-hidden="true">
+          <g transform="translate(126 112)">
+            <g class="rd-grid">
+              <polygon points="0,-90 85.6,-27.8 52.9,72.8 -52.9,72.8 -85.6,-27.8"/>
+              <polygon points="0,-90 85.6,-27.8 52.9,72.8 -52.9,72.8 -85.6,-27.8" transform="scale(.66)"/>
+              <polygon points="0,-90 85.6,-27.8 52.9,72.8 -52.9,72.8 -85.6,-27.8" transform="scale(.33)"/>
+              <line x1="0" y1="0" x2="0" y2="-90"/><line x1="0" y1="0" x2="85.6" y2="-27.8"/><line x1="0" y1="0" x2="52.9" y2="72.8"/><line x1="0" y1="0" x2="-52.9" y2="72.8"/><line x1="0" y1="0" x2="-85.6" y2="-27.8"/>
+            </g>
+            <polygon class="rd-als" points="0,-72 60.9,-19.8 44.7,61.5 -35.3,48.5 -66.6,-21.6"/>
+            <g class="rd-pt"><polygon points="0,-62 53.3,-17.3 38.8,53.4 -30.6,42.1 -57.1,-18.5"/>
+              <circle cx="0" cy="-62" r="5"/><circle cx="53.3" cy="-17.3" r="5"/><circle cx="38.8" cy="53.4" r="5"/><circle cx="-30.6" cy="42.1" r="5"/><circle cx="-57.1" cy="-18.5" r="5"/></g>
+          </g>
+          <rect x="8" y="226" width="12" height="12" rx="3" class="lg-pt"/><text x="25" y="237" class="fn-lab-s">PATIENT</text>
+          <rect x="108" y="226" width="12" height="12" rx="3" class="lg-als"/><text x="125" y="237" class="fn-lab-s">ALS CASES</text>
+        </svg>
+      </div>
+      <p class="fn-text">Report on the similarity between the patient's case and ALS-diagnosed patient cases</p>
+    </article>
+
+    <article class="fn-card card-w" style="--c:4">
+      <div class="fn-vis v5">
+        <i class="tile" style="--sx:-330px;--sy:-70px;--bg:#43b05c;--k:0s"></i>
+        <i class="tile" style="--sx:-330px;--sy:60px;--bg:#bf3b30;--k:.15s"></i>
+        <i class="tile" style="--sx:-330px;--sy:-10px;--bg:#9bd6a4;--k:.3s"></i>
+        <i class="tile" style="--sx:-330px;--sy:120px;--bg:#1b1f1d;--k:.45s"></i>
+        <div class="br-wrap">
+          <div class="br-tilt">
+            <div class="br-bar"><i></i><i></i><i></i><span>neuromotion / patient</span></div>
+            <img src="assets/dashboard.png" alt="NeuroMotion patient dashboard">
+            <div class="br-shine"></div>
+          </div>
+        </div>
+      </div>
+      <p class="fn-text">Display the information on a single web page</p>
+    </article>
+  </div>
+</section>

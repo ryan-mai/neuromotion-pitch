@@ -1,0 +1,53 @@
+#s-stack .tt{position:absolute;left:96px;top:140px;font-size:84px;white-space:nowrap}
+#s-stack .wires{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+#s-stack .w{fill:none;stroke:var(--sage-d);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+#s-stack .w2{fill:none;stroke:var(--sage-d);stroke-width:4;stroke-linecap:round;stroke-dasharray:10 12;opacity:0}
+#s-stack .ah{fill:var(--sage-d);opacity:0}
+#s-stack.is-active .w{animation:s7draw .7s var(--out) both;animation-delay:var(--d)}
+#s-stack.is-active .ah{animation:rv-fade .3s both;animation-delay:calc(var(--d) + .5s)}
+#s-stack.is-active .w2{animation:s7fade .5s both,s7dash 1.2s linear infinite;animation-delay:var(--d),var(--d)}
+@keyframes s7draw{to{stroke-dashoffset:0}}
+@keyframes s7fade{to{opacity:1}}
+@keyframes s7dash{to{stroke-dashoffset:-44}}
+#s-stack .fx{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+#s-stack .pk{position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--ok-d);opacity:0;
+  box-shadow:0 0 0 7px rgba(67,176,92,.25),0 0 22px var(--ok)}
+#s-stack .pk.b{background:#e59a00;box-shadow:0 0 0 7px rgba(229,154,0,.25),0 0 22px #e59a00}
+#s-stack.is-active .pk{animation:s7travel 2.4s linear infinite;animation-delay:var(--d)}
+@keyframes s7travel{0%{offset-distance:0%;opacity:0;scale:.6}12%{opacity:1;scale:1}85%{opacity:1}100%{offset-distance:100%;opacity:0;scale:.6}}
+
+#s-stack .nd{position:absolute;top:270px;left:calc(96px + var(--k)*462px);width:340px;height:340px;padding:26px 28px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+#s-stack .nd.tiger{box-shadow:0 4px 0 #d3d8d2,0 24px 60px rgba(0,0,0,.12),0 0 0 4px rgba(253,181,21,.55)}
+#s-stack .tag{font:500 24px var(--fm);letter-spacing:.04em;text-transform:uppercase;color:var(--sage-d);white-space:nowrap}
+#s-stack .nd .logo{height:64px;flex:none}
+#s-stack .nd .logo img{max-width:80px;object-fit:contain}
+#s-stack .nn{font:800 38px/1.05 var(--fd);letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
+#s-stack .sb{margin:0;font:400 24px/1.3 var(--fb);color:var(--sage-d)}
+#s-stack .shot{height:64px;border-radius:14px;overflow:hidden;flex:none;background:#dde1dc}
+#s-stack .shot img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+#s-stack .sv{position:absolute;top:650px;width:480px;height:350px;padding:28px;display:flex;flex-direction:column;gap:16px}
+#s-stack .svh{display:flex;flex-direction:column;gap:12px}
+#s-stack .sv .logo{height:72px}
+#s-stack .sv .logo img{max-width:80px}
+#s-stack .sv .sb{font-size:26px;line-height:1.35;color:var(--ink)}
+
+#s-stack .race{position:absolute;left:1104px;top:650px;width:720px;height:350px;padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+#s-stack .row{display:flex;flex-direction:column;gap:6px}
+#s-stack .lbl{font:600 26px var(--fb);color:var(--ink)}
+#s-stack .bar{height:48px;border-radius:14px;background:rgba(27,31,29,.08);overflow:hidden}
+#s-stack .bar i{height:100%;width:0;border-radius:14px;display:flex;align-items:center;justify-content:flex-end;padding-right:16px}
+#s-stack .bar i.slow{background:linear-gradient(90deg,#e0713a,var(--orange))}
+#s-stack .bar i.fast{background:linear-gradient(90deg,var(--mint),var(--ok-d))}
+#s-stack .bar b{font:800 28px var(--fm);color:#fff;white-space:nowrap}
+#s-stack.is-active .bar i.slow{animation:s7bar 2s cubic-bezier(.25,1,.5,1) 3.5s both}
+#s-stack.is-active .bar i.fast{animation:s7bar .66s cubic-bezier(.25,1,.5,1) 3.5s both}
+@keyframes s7bar{from{width:0}to{width:var(--w)}}
+#s-stack .x3{align-self:flex-start;font:800 52px/1 var(--fd);letter-spacing:-.03em;color:var(--ok-d);background:#e4f3e6;border:2px solid #b7dcbc;border-radius:99px;padding:8px 28px 12px}
+@media (prefers-reduced-motion:reduce){
+  #s-stack .pk{display:none}
+  #s-stack .w{stroke-dashoffset:0!important;animation:none!important}
+  #s-stack .w2{animation:none!important;opacity:1}
+  #s-stack .ah{animation:none!important;opacity:1}
+  #s-stack .bar i{animation:none!important;width:var(--w)}
+}

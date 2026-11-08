@@ -1,0 +1,74 @@
+<section class="slide" id="s-stack" data-section="The Solution · How it's built" data-theme="light">
+  <div class="bg-aurora"></div><div class="bg-grid"></div><div class="bg-grain"></div>
+
+  <div class="eyebrow rv" style="--d:.1s;position:absolute;left:96px;top:108px">Architecture</div>
+  <h2 class="h2 tt" data-split="words" style="--d:.2s">Built on real infrastructure</h2>
+
+  <svg class="wires" viewBox="0 0 1920 1080" aria-hidden="true">
+    <path class="w" pathLength="1" style="--d:1.0s" d="M436 440H548"/>
+    <path class="w" pathLength="1" style="--d:1.25s" d="M898 440H1010"/>
+    <path class="w" pathLength="1" style="--d:1.5s" d="M1360 440H1472"/>
+    <polygon class="ah" style="--d:1.5s" points="546,429 560,440 546,451"/>
+    <polygon class="ah" style="--d:1.75s" points="1008,429 1022,440 1008,451"/>
+    <polygon class="ah" style="--d:2.0s" points="1470,429 1484,440 1470,451"/>
+    <path class="w2" style="--d:2.0s" d="M336 650C336 625 700 640 700 610"/>
+    <path class="w2" style="--d:2.2s" d="M840 650C840 625 780 635 780 610"/>
+    <path class="w2" style="--d:2.4s" d="M1190 610V650"/>
+  </svg>
+
+  <div class="fx" aria-hidden="true">
+    <i class="pk" style="--d:2.2s;offset-path:path('M436 440H558')"></i>
+    <i class="pk" style="--d:2.9s;offset-path:path('M898 440H1020')"></i>
+    <i class="pk" style="--d:3.6s;offset-path:path('M1360 440H1482')"></i>
+    <i class="pk b" style="--d:2.6s;offset-path:path('M336 650C336 625 700 640 700 610')"></i>
+    <i class="pk b" style="--d:3.3s;offset-path:path('M840 650C840 625 780 635 780 610')"></i>
+    <i class="pk" style="--d:3.2s;offset-path:path('M1190 610V650')"></i>
+  </div>
+
+  <div class="nd card-w rv-pop" style="--k:0;--d:.5s">
+    <div class="tag">01 · Capture</div>
+    <span class="logo" data-logo="mediapipe"></span>
+    <div class="nn">Phone</div>
+    <p class="sb">Camera + mic, on-device hand tracking</p>
+  </div>
+  <div class="nd card-w rv-pop" style="--k:1;--d:.75s">
+    <div class="tag">02 · Serve</div>
+    <span class="logo" data-logo="vultr"></span>
+    <div class="nn">Cloud Compute</div>
+    <p class="sb">App server, automatic HTTPS at neuromotion.health</p>
+  </div>
+  <div class="nd card-w rv-pop tiger" style="--k:2;--d:1s">
+    <div class="tag">03 · Store</div>
+    <span class="logo" data-logo="tigerdata"></span>
+    <div class="nn">TimescaleDB</div>
+    <p class="sb">Hypertable, compression, weekly continuous aggregate</p>
+  </div>
+  <div class="nd card-w rv-pop" style="--k:3;--d:1.25s">
+    <div class="tag">04 · Clinician</div>
+    <div class="shot"><img src="assets/dashboard.png" alt=""></div>
+    <div class="nn">Dashboard</div>
+    <p class="sb">Baseline, trends, tier and referral</p>
+  </div>
+
+  <div class="sv card-w rv-r" style="left:96px;--d:2.3s">
+    <div class="svh"><span class="logo" data-logo="gemini"></span><span class="tag">Side service · API</span></div>
+    <p class="sb">Reads photos and PDFs of lab sheets into values, and writes a plain-language insight summary.</p>
+  </div>
+  <div class="sv card-w rv-r" style="left:600px;--d:2.5s">
+    <div class="svh"><span class="logo" data-logo="elevenlabs" data-color="1b1f1d"></span><span class="tag">Side service · Voice</span></div>
+    <p class="sb">Voice agent: the doctor speaks results into a confirm card before anything saves. Also the friendly check-in voice.</p>
+  </div>
+
+  <div class="race card-w rv-r" style="--d:2.7s">
+    <div class="tag">Tiger Data · 773,000 synthetic readings</div>
+    <div class="row">
+      <div class="lbl">Raw rows</div>
+      <div class="bar"><i class="slow" style="--w:100%"><b><span data-count="407" data-dur="2000" data-delay="3500">0</span> ms</b></i></div>
+    </div>
+    <div class="row">
+      <div class="lbl">Weekly roll-up</div>
+      <div class="bar"><i class="fast" style="--w:33%"><b><span data-count="134" data-dur="660" data-delay="3500">0</span> ms</b></i></div>
+    </div>
+    <div class="x3 rv-pop" style="--d:4.4s">~3× faster</div>
+  </div>
+</section>

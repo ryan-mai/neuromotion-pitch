@@ -1,0 +1,88 @@
+#s-objectives .ob-head{position:absolute;left:96px;right:96px;top:112px;height:170px}
+#s-objectives .eyebrow{display:flex;align-items:center;gap:14px}
+#s-objectives .ob-dot{width:12px;height:12px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(61,122,75,.6);animation:ob-ping 2.4s ease-out infinite}
+@keyframes ob-ping{to{box-shadow:0 0 0 18px rgba(61,122,75,0)}}
+#s-objectives .ob-title{margin-top:10px;font-size:120px;line-height:1}
+#s-objectives .ob-lede{position:absolute;right:0;bottom:14px;margin:0;font:400 32px/1.3 var(--fb);color:var(--sage-d)}
+
+#s-objectives .ob-cards{position:absolute;left:96px;top:314px;width:1728px;height:656px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;perspective:1600px}
+#s-objectives .ob-card{position:relative;padding:34px;display:flex;flex-direction:column;
+  background:linear-gradient(165deg,rgba(27,31,29,.09),rgba(27,31,29,.03));
+  border:1px solid rgba(27,31,29,.12);border-radius:32px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 30px 70px rgba(0,0,0,.35)}
+#s-objectives .ob-card::before{animation-delay:calc(var(--i) * -1.3s)}
+#s-objectives .ob-ghost{position:absolute;right:26px;top:14px;font:800 120px/1 var(--fd);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px rgba(27,31,29,.09);pointer-events:none}
+#s-objectives .badge-n{width:64px;height:64px;border-radius:20px;font-size:30px;box-shadow:0 0 30px rgba(61,122,75,.35)}
+#s-objectives .ob-ico{position:relative;margin:14px auto 12px;width:276px;height:230px;flex:none}
+#s-objectives .ob-ico svg{width:100%;height:100%;overflow:visible}
+#s-objectives .ob-text{margin:auto 0 0;font:500 28px/1.32 var(--fb);color:var(--ink);letter-spacing:-.005em}
+
+/* entry: cards fan out from one stack */
+.is-active#s-objectives .ob-card{animation:ob-in 1.3s var(--spring) both;animation-delay:calc(.45s + var(--i) * .16s)}
+@keyframes ob-in{
+  from{opacity:0;transform:translate3d(calc((1.5 - var(--i)) * 438px),70px,0) rotate(calc((var(--i) - 1.5) * -4deg)) scale(.78)}
+  35%{opacity:1}
+  to{opacity:1;transform:none}}
+
+/* shared svg bits */
+#s-objectives .i-lab{font:500 15px var(--fm);letter-spacing:.12em;fill:var(--mute)}
+#s-objectives svg line,#s-objectives svg circle,#s-objectives svg path{fill:none}
+
+/* 1: shrinking time */
+#s-objectives .i1-face{stroke:rgba(27,31,29,.25);stroke-width:5}
+#s-objectives .i1-arc{stroke:var(--ok);stroke-width:8;stroke-linecap:round;stroke-dasharray:100 100;transform:rotate(-90deg);transform-origin:120px 66px}
+#s-objectives .i1-hand{transform-origin:120px 66px}
+#s-objectives .i1-hand line{stroke:#1b1f1d;stroke-width:5;stroke-linecap:round}
+#s-objectives .i1-line{stroke:rgba(27,31,29,.45);stroke-width:3;stroke-dasharray:3 9;stroke-linecap:round;transform-origin:30px 160px}
+#s-objectives svg .i1-a{fill:var(--orange-l)}
+#s-objectives svg .i1-b{fill:var(--ok)}
+
+/* 2: stopwatch */
+#s-objectives .i2-face{stroke:rgba(27,31,29,.28);stroke-width:6}
+#s-objectives .i2-ticks{stroke:rgba(27,31,29,.3);stroke-width:8;stroke-dasharray:2 22.4}
+#s-objectives .i2-arc{stroke:var(--ok);stroke-width:8;stroke-linecap:round;stroke-dasharray:100 100;transform:rotate(-90deg);transform-origin:120px 110px;filter:drop-shadow(0 0 8px rgba(61,122,75,.7))}
+#s-objectives .i2-hand{transform-origin:120px 110px}
+#s-objectives .i2-hand line{stroke:var(--ok);stroke-width:5;stroke-linecap:round}
+#s-objectives .i2-t{font:500 24px var(--fm);letter-spacing:.14em;fill:#1b1f1d}
+
+/* 3: venn */
+#s-objectives svg .i3-a{fill:rgba(61,122,75,.30);stroke:var(--ok);stroke-width:3}
+#s-objectives svg .i3-b{fill:rgba(27,31,29,.22);stroke:#1b1f1d;stroke-width:3}
+#s-objectives .i3-a,#s-objectives .i3-b{transform-box:fill-box;transform-origin:center}
+#s-objectives .i3-chip{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);white-space:nowrap;
+  font:500 20px var(--fm);letter-spacing:.06em;padding:8px 18px;border-radius:99px;
+  background:rgba(27,31,29,.1);border:1px solid rgba(27,31,29,.3);color:var(--ink)}
+
+/* 4: funnel */
+#s-objectives svg .i4-fun{stroke:rgba(27,31,29,.6);stroke-width:4;stroke-linejoin:round;fill:rgba(27,31,29,.06)}
+#s-objectives .i4-rim{stroke:var(--ok);stroke-width:4;stroke-linecap:round}
+#s-objectives svg .i4-x{fill:rgba(27,31,29,.65)}
+#s-objectives svg .i4-ok{fill:var(--ok);filter:drop-shadow(0 0 6px rgba(61,122,75,.8))}
+
+@media (prefers-reduced-motion:no-preference){
+  #s-objectives .i1-arc{animation:i1-arc 5s var(--inout) infinite}
+  @keyframes i1-arc{0%,10%{stroke-dashoffset:0}60%,100%{stroke-dashoffset:72}}
+  #s-objectives .i1-hand{animation:i1-hand 5s var(--inout) infinite}
+  @keyframes i1-hand{0%,10%{transform:rotate(0)}60%,100%{transform:rotate(-260deg)}}
+  #s-objectives .i1-line{animation:i1-line 5s var(--inout) infinite}
+  @keyframes i1-line{0%,10%{transform:scaleX(1)}60%,100%{transform:scaleX(.42)}}
+  #s-objectives .i1-b,#s-objectives .i1-t{animation:i1-b 5s var(--inout) infinite}
+  @keyframes i1-b{0%,10%{transform:translateX(0)}60%,100%{transform:translateX(-104px)}}
+
+  #s-objectives .i2-arc{animation:i2-arc 4.4s var(--inout) infinite}
+  @keyframes i2-arc{0%{stroke-dashoffset:100}45%,85%{stroke-dashoffset:82}100%{stroke-dashoffset:100}}
+  #s-objectives .i2-hand{animation:i2-hand 4.4s var(--inout) infinite}
+  @keyframes i2-hand{0%{transform:rotate(0)}45%,85%{transform:rotate(65deg)}100%{transform:rotate(0)}}
+
+  #s-objectives .i3-a{animation:i3-a 5s ease-in-out infinite}
+  #s-objectives .i3-b{animation:i3-b 5s ease-in-out infinite}
+  @keyframes i3-a{50%{transform:translateX(22px)}}
+  @keyframes i3-b{50%{transform:translateX(-22px)}}
+  #s-objectives .i3-core{animation:i3-core 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes i3-core{50%{transform:scale(1.8);opacity:.6}}
+
+  #s-objectives .i4-x{animation:i4-x 3s linear infinite;animation-delay:var(--dl);opacity:0}
+  @keyframes i4-x{0%{transform:translateY(0);opacity:0}10%{opacity:1}55%{transform:translateY(112px);opacity:1}70%,100%{transform:translateY(122px);opacity:0}}
+  #s-objectives .i4-ok{animation:i4-ok 3s linear infinite;animation-delay:var(--dl);opacity:0}
+  @keyframes i4-ok{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(184px);opacity:1}}
+}

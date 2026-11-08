@@ -1,0 +1,202 @@
+/* NeuroMotion deck — shared base. Design language: BioHacks pitch deck (dark #161b17 / cream / lime)
+   + NeuroMotion demo film (sage light scenes, phone mockups, tight Inter-ish headlines, clinical green/red). */
+
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@property --p   { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --fill{ syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+
+:root{
+  --bg:#161b17; --bg2:#1b211c; --bg3:#232b25;
+  --cream:#eef2ec; --mute:#8A8F87; --mute2:#B9BDB4;
+  --lime:#9bd6a4; --lime-d:#1f2a21; --lime-d2:#2f4333;
+  --orange:#bf3b30; --orange-l:#e8786b;
+  --ink:#1b1f1d; --sage:#b3bab1; --sage-d:#5d695f; --sage-l:#dde1dc; --page:#eceeec;
+  --ok:#43b05c; --ok-d:#2f8744; --mint:#9bd6a4; --warn:#e59a00; --bad:#bf3b30; --bad-l:#ff6b5e;
+  --fd:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  --fb:'Public Sans','DM Sans',system-ui,sans-serif;
+  --fm:'DM Mono',ui-monospace,monospace;
+  /* motion tokens — linear() gives real spring physics in plain CSS (Chrome 113+, Safari 17.2+, FF 112+) */
+  --spring: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017 19.4%, 1.077 22.4%, 1.121 25.7%, 1.149 29.2%, 1.159 33%, 1.153 36.5%, 1.134 40.4%, 1.044 51.4%, 1.01 57.2%, 0.992 62.3%, 0.985 67.1%, 0.992 79.7%, 1 90%, 1);
+  --bounce: linear(0, 0.004, 0.016, 0.035, 0.063, 0.098, 0.141 13.6%, 0.25, 0.391, 0.563, 0.765, 1, 0.891 40.9%, 0.848, 0.813, 0.785, 0.766, 0.754, 0.75, 0.754, 0.766, 0.785, 0.813, 0.848, 0.891 68.2%, 1 72.7%, 0.973, 0.953, 0.941, 0.937, 0.941, 0.953, 0.973, 1, 0.988, 0.984, 0.988, 1);
+  --out: cubic-bezier(.16,1,.3,1);
+  --inout: cubic-bezier(.76,0,.24,1);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:var(--fb);-webkit-font-smoothing:antialiased}
+
+/* ---------- stage: fixed 1920x1080, scaled to fit by engine.js ---------- */
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;background:var(--bg);color:var(--cream)}
+#deck{position:absolute;inset:0}
+
+.slide{position:absolute;inset:0;overflow:hidden;visibility:hidden;background:var(--bg);color:var(--cream);
+  contain:layout paint}
+.slide.is-active,.slide.is-leaving{visibility:visible}
+.slide.is-active{z-index:2}
+.slide.is-leaving{z-index:1}
+.slide[data-theme="light"]{background:linear-gradient(160deg,#dfe2de,#bcc1bb);color:var(--ink)}
+.slide[data-theme="lime"]{background:var(--lime);color:var(--bg)}
+
+/* ---------- ambient layers (drop these as first children of a slide) ---------- */
+.bg-aurora{position:absolute;inset:-20%;pointer-events:none;
+  background:
+   radial-gradient(40% 40% at 25% 30%, rgba(155,214,164,.14), transparent 70%),
+   radial-gradient(35% 35% at 75% 65%, rgba(155,214,164,.12), transparent 70%),
+   radial-gradient(30% 30% at 60% 15%, rgba(191,59,48,.10), transparent 70%);
+  filter:blur(30px);animation:aurora 22s ease-in-out infinite alternate}
+@keyframes aurora{to{transform:translate3d(6%,4%,0) rotate(8deg) scale(1.08)}}
+.slide[data-theme="light"] .bg-aurora{background:
+   radial-gradient(40% 40% at 25% 30%, rgba(255,255,255,.55), transparent 70%),
+   radial-gradient(35% 35% at 75% 65%, rgba(61,122,75,.14), transparent 70%)}
+.bg-grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(238,242,236,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(238,242,236,.045) 1px,transparent 1px);
+  background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%);mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%)}
+.slide[data-theme="light"] .bg-grid{background-image:linear-gradient(rgba(27,31,29,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,31,29,.06) 1px,transparent 1px)}
+.bg-grain{position:absolute;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+/* cursor spotlight (engine updates --mx/--my) */
+.bg-spot{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(500px 500px at var(--mx,70%) var(--my,40%), rgba(155,214,164,.08), transparent 70%)}
+
+/* ---------- type ---------- */
+.eyebrow{font:500 24px var(--fm);letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
+.slide[data-theme="light"] .eyebrow{color:var(--ok-d)}
+.slide[data-theme="lime"] .eyebrow{color:var(--lime-d2)}
+.h1{font:800 150px/.95 var(--fd);letter-spacing:-.045em;margin:0}
+.h2{font:800 104px/1 var(--fd);letter-spacing:-.04em;margin:0}
+.h3{font:700 56px/1.1 var(--fd);letter-spacing:-.025em;margin:0}
+.lede{font:400 38px/1.4 var(--fb);color:var(--mute2);letter-spacing:-.005em;margin:0}
+.slide[data-theme="light"] .lede{color:var(--sage-d)}
+.body{font:400 30px/1.45 var(--fb);color:var(--cream)}
+.mono{font-family:var(--fm)}
+.hl{color:var(--lime)} .hl-o{color:var(--orange-l)}
+.slide[data-theme="light"] .hl{color:var(--ok-d)}
+.num{font:800 30px var(--fm);color:var(--lime);letter-spacing:.06em}
+
+/* ---------- slide chrome (engine injects; slides can ignore) ---------- */
+.chrome-top{position:absolute;left:96px;right:96px;top:56px;display:flex;justify-content:space-between;align-items:center;
+  font:500 20px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);z-index:5;pointer-events:none}
+.chrome-top .brand{display:flex;align-items:center;gap:14px;color:var(--cream)}
+.chrome-top .brand img{width:56px;height:56px;border-radius:15px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.chrome-top .brand{font-size:26px;letter-spacing:.06em;font-weight:500}
+.slide[data-theme="light"] .chrome-top .brand{color:var(--ink)}
+.slide[data-theme="lime"] .chrome-top,.slide[data-theme="lime"] .chrome-top .brand{color:var(--lime-d2)}
+#progress{position:absolute;left:0;bottom:0;height:5px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--lime);z-index:20;
+  transition:transform .9s var(--out);box-shadow:0 0 18px var(--lime)}
+#counter{position:absolute;right:96px;bottom:44px;font:500 20px var(--fm);letter-spacing:.14em;color:var(--mute);z-index:20;mix-blend-mode:difference;color:#aaa}
+#hint{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);font:500 18px var(--fm);letter-spacing:.14em;color:#aaa;z-index:20;
+  opacity:0;animation:hint 7s 1.5s both;mix-blend-mode:difference}
+@keyframes hint{0%,100%{opacity:0}12%,80%{opacity:.8}}
+
+/* ---------- reveal system ----------
+   Add a class to any element inside a slide. It plays when the slide becomes active (and replays on revisit).
+   Timing: --d (base delay, e.g. style="--d:.3s"), and --i (stagger index, set by engine for [data-stagger] children).   */
+.slide:not(.is-active) .rv,.slide:not(.is-active) [class*="rv-"]{animation:none!important}
+.rv,[class*="rv-"]{opacity:0;animation-fill-mode:both;animation-duration:.9s;animation-timing-function:var(--out);
+  animation-delay:calc(var(--d,0s) + var(--i,0) * var(--st,90ms))}
+.is-active .rv{animation-name:rv-up}
+.is-active .rv-down{animation-name:rv-down}
+.is-active .rv-l{animation-name:rv-l}
+.is-active .rv-r{animation-name:rv-r}
+.is-active .rv-fade{animation-name:rv-fade}
+.is-active .rv-pop{animation-name:rv-pop;animation-duration:1.1s;animation-timing-function:var(--spring)}
+.is-active .rv-blur{animation-name:rv-blur;animation-duration:1.1s}
+.is-active .rv-clip{animation-name:rv-clip;animation-duration:1.1s;animation-timing-function:var(--inout)}
+.is-active .rv-clip-u{animation-name:rv-clip-u;animation-duration:1s;animation-timing-function:var(--inout)}
+.is-active .rv-rot{animation-name:rv-rot;animation-duration:1.2s;animation-timing-function:var(--spring)}
+.is-active .rv-draw{animation-name:rv-fade}
+@keyframes rv-up{from{opacity:0;transform:translate3d(0,48px,0)}to{opacity:1;transform:none}}
+@keyframes rv-down{from{opacity:0;transform:translate3d(0,-48px,0)}to{opacity:1;transform:none}}
+@keyframes rv-l{from{opacity:0;transform:translate3d(-80px,0,0)}to{opacity:1;transform:none}}
+@keyframes rv-r{from{opacity:0;transform:translate3d(80px,0,0)}to{opacity:1;transform:none}}
+@keyframes rv-fade{from{opacity:0}to{opacity:1}}
+@keyframes rv-pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes rv-blur{from{opacity:0;filter:blur(24px);transform:scale(1.06)}to{opacity:1;filter:none;transform:none}}
+@keyframes rv-clip{from{opacity:1;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes rv-clip-u{from{opacity:1;clip-path:inset(100% 0 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes rv-rot{from{opacity:0;transform:rotate(-14deg) translateY(60px) scale(.9)}to{opacity:1;transform:none}}
+
+/* split text: <h1 data-split="chars"> → each char gets .ch with --i (engine). <… data-split="words"> → .wd */
+.split-in{display:inline-block;white-space:pre}
+.ch,.wd{display:inline-block;opacity:0;white-space:pre}
+.is-active .ch{animation:ch-in .9s var(--spring) both;animation-delay:calc(var(--d,0s) + var(--i) * 32ms)}
+.is-active .wd{animation:wd-in 1s var(--out) both;animation-delay:calc(var(--d,0s) + var(--i) * 70ms)}
+@keyframes ch-in{from{opacity:0;transform:translate3d(0,.7em,0) rotate(6deg) scale(.8);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes wd-in{from{opacity:0;transform:translate3d(0,.6em,0);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+/* masked line reveal: <span class="mask"><span class="mask-in">Text</span></span> */
+.mask{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.mask-in{display:block;transform:translateY(110%)}
+.is-active .mask-in{animation:mask-in 1.1s var(--out) both;animation-delay:calc(var(--d,0s) + var(--i,0)*110ms)}
+@keyframes mask-in{from{transform:translateY(110%) rotate(3deg)}to{transform:none}}
+
+/* ---------- reusable components ---------- */
+.glass{background:rgba(238,242,236,.06);border:1px solid rgba(238,242,236,.12);border-radius:32px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.slide[data-theme="light"] .glass{background:rgba(255,255,255,.6);border-color:rgba(27,31,29,.08);box-shadow:0 4px 0 #d3d8d2,0 24px 60px rgba(0,0,0,.08)}
+.card-w{background:#fff;color:var(--ink);border-radius:32px;box-shadow:0 4px 0 #d3d8d2,0 24px 60px rgba(0,0,0,.12)}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:10px 22px;border-radius:99px;font:500 22px var(--fm);letter-spacing:.08em;
+  background:rgba(155,214,164,.12);color:var(--lime);border:1px solid rgba(155,214,164,.3)}
+.pill.o{background:rgba(191,59,48,.15);color:var(--orange-l);border-color:rgba(191,59,48,.4)}
+.slide[data-theme="light"] .pill{background:#e4f3e6;color:var(--ok-d);border-color:#b7dcbc}
+/* animated gradient border (uses @property --ang) */
+.glow-border{position:relative;border-radius:32px}
+.glow-border::before{content:"";position:absolute;inset:-2px;border-radius:inherit;padding:2px;
+  background:conic-gradient(from var(--ang),transparent 0 60%,var(--lime) 80%,transparent 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:spin 5s linear infinite}
+@keyframes spin{to{--ang:360deg}}
+/* shimmer text */
+.shimmer{background:linear-gradient(100deg,var(--cream) 30%,var(--lime) 50%,var(--cream) 70%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 4.5s ease-in-out infinite}
+@keyframes shim{0%{background-position:120% 0}100%{background-position:-120% 0}}
+/* number badge */
+.badge-n{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;font:800 34px var(--fd);background:var(--lime);color:var(--bg);flex:none}
+/* floating idle motion for decorative bits */
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-16px)}}
+/* progress ring/bar driven by @property --fill: <div class="meter" style="--to:81%"> */
+.meter{height:14px;border-radius:99px;background:rgba(238,242,236,.12);overflow:hidden}
+.meter::after{content:"";display:block;height:100%;width:var(--fill);border-radius:inherit;background:linear-gradient(90deg,var(--ok),var(--mint))}
+.is-active .meter::after{animation:fillto 1.6s var(--out) both;animation-delay:calc(var(--d,.4s))}
+@keyframes fillto{from{--fill:0%}to{--fill:var(--to,100%)}}
+
+/* logos (engine fills <span class="logo" data-logo="vultr">) */
+.logo{display:inline-flex;align-items:center;gap:14px;height:64px}
+.logo img{height:100%;width:auto;display:block}
+.logo .lw{font:700 40px var(--fd);letter-spacing:-.03em}
+
+/* ---------- slide-to-slide transition (View Transitions API, with graceful fallback) ---------- */
+::view-transition-group(root){animation-duration:.9s;animation-timing-function:var(--out)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+html[data-dir="next"]::view-transition-old(root){animation:vt-out-l .9s var(--inout) both}
+html[data-dir="next"]::view-transition-new(root){animation:vt-in-r .9s var(--inout) both}
+html[data-dir="prev"]::view-transition-old(root){animation:vt-out-r .9s var(--inout) both}
+html[data-dir="prev"]::view-transition-new(root){animation:vt-in-l .9s var(--inout) both}
+@keyframes vt-out-l{to{transform:translateX(-12%) scale(.94);opacity:0;filter:blur(8px)}}
+@keyframes vt-in-r{from{clip-path:inset(0 0 0 100%);}to{clip-path:inset(0 0 0 0)}}
+@keyframes vt-out-r{to{transform:translateX(12%) scale(.94);opacity:0;filter:blur(8px)}}
+@keyframes vt-in-l{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+/* fallback (no VT API): simple crossfade-slide */
+.no-vt .slide.is-active{animation:fb-in .8s var(--out) both}
+.no-vt .slide.is-leaving{animation:fb-out .8s var(--out) both}
+@keyframes fb-in{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes fb-out{to{opacity:0;transform:scale(.96)}}
+
+@media (prefers-reduced-motion:reduce){
+  .rv,[class*="rv-"],.ch,.wd,.mask-in{animation-duration:.01s!important;animation-delay:0s!important}
+  .bg-aurora,.float,.shimmer,.glow-border::before{animation:none!important}
+}
+
+/* ---- app-matched refinements (sage / ink pills / dot-matrix numerals) ---- */
+:root{--fdot:'Doto','DM Mono',monospace;--lime:#9bd6a4;--pill:#16191a}
+.num,[data-count],.dot-num{font-family:var(--fdot)!important;font-weight:700}
+#progress{background:var(--sage-d);box-shadow:none;height:4px}
+.slide[data-theme="dark"],.slide:not([data-theme]){background:linear-gradient(160deg,#1b211c,#161b17)}
+.badge-n{background:var(--cream);color:#16191a;border-radius:99px}
+.slide[data-theme="light"] .badge-n{background:#16191a;color:#eef2ec}
+.pill{border-radius:99px}
+.slide[data-theme="light"] .eyebrow,.slide[data-theme="light"] .hl{color:var(--ok)}
+.shimmer{background:linear-gradient(100deg,var(--cream) 30%,var(--mint) 50%,var(--cream) 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text}
+.slide[data-theme="light"] .shimmer{background:linear-gradient(100deg,#1b1f1d 30%,#3d7a4b 50%,#1b1f1d 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.chrome-top{top:38px}
+.chrome-top .brand img{width:46px;height:46px;border-radius:13px}

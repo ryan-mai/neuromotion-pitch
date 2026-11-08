@@ -1,0 +1,33 @@
+#s-next .nx-head{position:absolute;left:96px;top:120px}
+#s-next .nx-road{position:absolute;inset:0;width:1920px;height:1080px}
+#s-next .nx-base{stroke:rgba(27,31,29,.14);stroke-width:8;stroke-linecap:round;stroke-dasharray:2 18}
+#s-next .nx-draw{stroke:var(--ok-d);stroke-width:8;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 8px rgba(67,176,92,.5))}
+#s-next.is-active .nx-draw{animation:nx-draw 3.8s .5s linear forwards}
+@keyframes nx-draw{to{stroke-dashoffset:0}}
+#s-next .nx-marker{position:absolute;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--lime);border:5px solid var(--ink);
+  box-shadow:0 0 0 10px rgba(155,214,164,.35),0 8px 20px rgba(0,0,0,.25);
+  offset-path:path("M96 590 C190 550 230 630 326 590 C420 550 550 630 643 590 C740 550 860 630 960 590 C1060 550 1180 630 1277 590 C1380 550 1490 630 1594 590 C1680 560 1760 610 1824 590");
+  offset-distance:0%;opacity:0;z-index:3}
+#s-next.is-active .nx-marker{animation:nx-move 3.8s .5s linear forwards, nx-mk 4.3s .5s linear forwards}
+@keyframes nx-move{to{offset-distance:100%}}
+@keyframes nx-mk{0%{opacity:0}4%{opacity:1}92%{opacity:1}100%{opacity:0}}
+#s-next .nx-node{position:absolute;top:590px;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--ink);color:var(--lime);
+  display:grid;place-items:center;font:800 34px var(--fd);box-shadow:0 0 0 8px var(--page),0 12px 28px rgba(0,0,0,.22);z-index:2;opacity:0}
+#s-next.is-active .nx-node{animation:nx-pop 1s var(--spring) both;animation-delay:var(--t)}
+@keyframes nx-pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+#s-next .nx-card{position:absolute;width:440px;margin-left:-220px;padding:26px 30px;border-radius:26px;background:#fff;box-shadow:0 4px 0 #d3d8d2,0 24px 50px rgba(0,0,0,.1);z-index:2}
+#s-next .nx-card h4{font:700 30px/1.2 var(--fd);letter-spacing:-.02em;margin:0;color:var(--ink)}
+#s-next .nx-card.up{bottom:calc(1080px - 520px)}
+#s-next .nx-card.down{top:660px}
+#s-next .nx-card.wide{width:500px;margin-left:-250px;padding:22px 28px}
+#s-next .nx-card.wide h4{font-size:25px;line-height:1.25;font-weight:600}
+#s-next .nx-card i{position:absolute;left:50%;width:3px;background:var(--sage-d);opacity:.5;transform:translateX(-50%)}
+#s-next .nx-card.down i{top:-38px;height:38px}
+#s-next .nx-card.up i{bottom:-38px;height:38px}
+#s-next .lanes{display:flex;gap:10px;margin-top:20px}
+#s-next .ln{flex:1;position:relative;font:500 17px var(--fm);letter-spacing:.04em;color:var(--sage-d);padding:12px 4px 4px;border-top:3px dashed var(--sage);text-align:center}
+#s-next .ln b{position:absolute;top:-9px;left:50%;width:15px;height:15px;margin-left:-7px;border-radius:50%;background:var(--sage)}
+#s-next .ln.good{color:var(--ok-d);border-top:3px solid var(--ok)}
+#s-next .ln.good b{background:var(--ok);box-shadow:0 0 0 5px rgba(67,176,92,.25);animation:nx-pulse 1.8s ease-in-out infinite}
+@keyframes nx-pulse{50%{box-shadow:0 0 0 10px rgba(67,176,92,.05)}}
+@media (prefers-reduced-motion:reduce){#s-next .nx-draw{stroke-dashoffset:0;animation:none!important}#s-next .nx-marker{display:none}#s-next *{animation-duration:.01s!important;animation-delay:0s!important}}

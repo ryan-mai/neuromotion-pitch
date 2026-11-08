@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <rect width="1200" height="400" fill="#16191a"/>
+  <g transform="translate(60,60) scale(0.6640625)">
+    <rect width="512" height="512" rx="112" fill="#232b25"/>
+    <path d="M138 372 V152 L374 360 V140" fill="none" stroke="#9bbd96" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="138" cy="372" r="30" fill="#dde1dc"/><circle cx="138" cy="152" r="30" fill="#9bbd96"/>
+    <circle cx="374" cy="360" r="30" fill="#9bbd96"/><circle cx="374" cy="140" r="30" fill="#eef2ec"/>
+    <circle cx="374" cy="140" r="52" fill="none" stroke="#9bbd96" stroke-width="6" opacity=".55"/>
+  </g>
+  <text x="440" y="220" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="100" font-weight="700" fill="#eef2ec" letter-spacing="-2">Neuro<tspan fill="#9bbd96">Motion</tspan></text>
+  <text x="444" y="278" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="29" fill="#97a398">Daily reps that make early ALS signs measurable</text>
+</svg>
